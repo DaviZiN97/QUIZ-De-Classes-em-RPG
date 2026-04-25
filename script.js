@@ -113,3 +113,9 @@ btnFinalizar.addEventListener("click", () => {
 });
 
 //teste
+
+// Adiciona as alterações ~ git add .
+
+// Salva as alterações no pc ~ git commit -m "mensagem"
+
+// Se quiser mandar pro github ~ git push
