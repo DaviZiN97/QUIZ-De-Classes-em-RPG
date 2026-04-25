@@ -1,5 +1,27 @@
 /*
 
+mago
+guerreiro
+assasino
+domador
+
+SANTO
+Paladino
+artista marcial
+rei do combate
+sábio
+mago de combate
+guerreiro mágico
+mago de combate
+invocador divíno
+invocador
+caçador
+necromante
+
+
+
+
+
 Em ordem de respostas do quiestionario
 
 1-1-2-1-1 || 2-1-2-1-1 || 1-1-2-2-1 || 1-1-2-1-2 || caso coloque mais de 1 da segunda opção ==> chance de 1/4 entre mago, guerreiro, assasino e domador
