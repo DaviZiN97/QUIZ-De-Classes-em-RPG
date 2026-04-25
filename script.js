@@ -111,3 +111,5 @@ btnFinalizar.addEventListener("click", () => {
 
   resultado.textContent = `Seu resultado é: ${personagemVencedor}`;
 });
+
+//teste
