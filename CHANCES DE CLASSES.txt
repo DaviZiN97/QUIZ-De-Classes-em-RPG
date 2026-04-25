@@ -1,0 +1,45 @@
+/*
+
+Em ordem de respostas do quiestionario
+
+1-1-2-1-1 || 2-1-2-1-1 || 1-1-2-2-1 || 1-1-2-1-2 || caso coloque mais de 1 da segunda opção ==> chance de 1/4 entre mago, guerreiro, assasino e domador
+
+3-1-2-1-1 ==> 2/4 de ganhar classe SANTO
+4-1-2-1-1 ==> 2/4 de paladino ou santo
+1-2-2-1-1 || 1-1-2-3-1 ==> guerreiro comum (sem ser mágico)
+1-3-2-1-1 ==> 1/2 chance de virar guerreiro ou artista marcial
+1-4-2-1-1 ==> artista marcial
+1-1-3-1-1 ==> 1/2 chance de domador
+1-1-4-1-1 ==> domador
+1-1-2-4-1 || ==> 1/100 chance de ser 'Rei do Combate'
+1-1-2-1-3 ==> mago
+1-1-2-1-4 ==> 1/2 de sábio ou mago
+
+se tiver somente 1 opcao da 3° alternativa pega instantaneamente a classe relacionada MENOS DE RELIGIÃO (continua sendo 2/4 pra santo caso contrario 1/4 classes principais)
+
+3-3-3-3-3 || 3-3-4-4-3 || 3-3-4-3-4==> 1/8 para Mago,mago de combate, Paladino, santo, guerreiro, domador, rei do combate, guerreiro mágico
+3-3-3-3-4 || 3-4-3-3-4 || 3-3-3-4-4 ==> 1/5 rei do combate, sabio, mago, guerreiro mágico, mago de combate
+3-3-3-4-3 || 3-4-3-3-3 ==> 1/3 rei do combate, guerreiro magíco, mago de combate
+3-3-4-3-3 ==> domador
+4-3-3-3-3 ==> 1/2 paladino, invocador divino
+
+4-4-3-3-3 || 4-3-3-4-3 ==> paladino
+4-3-4-3-3 || 4-3-3-3-4 ==> invocador divino
+3-4-4-3-3 ==> 1/4 artista marcial, mago de combate, guerreiro mágico, rei do combate
+3-4-3-4-3 ==> 1/2 rei do combate, caso falhe, 1/3 artista marcial, mago de combate, guerreiro mágico
+
+
+4-4-4-4-4 => 1/8 rei do combate, invocador divino, invocador, sabio, guerreiro mágico, mago de combate, domador, caçador
+4-4-4-3-3 => 1/6 invocador divino, domador, mago de combate, guerreiro mágico, rei do combate, artista marcial
+
+
+1-1-1-1-1 ==> 1/100 de ser necromante || 1/4 mago guerreiro assasino e domador
+
+
+
+
+
+
+
+
+*/
