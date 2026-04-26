@@ -191,16 +191,19 @@ const Perguntas = [{
 ]
 
 
+
+
+
 class Quiz {
 
     constructor() {
       this.perguntas = Perguntas
       this.questaoAtual = 0;
-      this.personagens = personagens ;
-    }
+      this.personagens = personagens;
+    };
 
 
-    mostrarPerguntas(){
+    mostrarPergunta(){
       const contagemQuestoes = document.getElementById("contagem_questoes")
       contagemQuestoes.textContent = this.questaoAtual + 1
 
@@ -210,13 +213,56 @@ class Quiz {
       for(let i = 0; i<4 ; i++){
         const botao = document.getElementById("opcao-"+ (i+1))
         botao.textContent = this.perguntas[this.questaoAtual].opcoes[i].texto
+        botao.onclick = () =>{
+          const pontos = this.perguntas[this.questaoAtual].opcoes[i].pontos;
+          for(let classe in pontos){
+            this.personagens[classe].adicionarPontos(pontos[classe]);
+          }
+        }
       }
     }
     proximaPergunta(){
+      this.questaoAtual++;
+
+      if(this.questaoAtual< this.perguntas.length){
+        this.mostrarPergunta();
+      }
+      else{
+        this.calcularResultado();
+      }
 
     }
-    calcularResultado(){}
-}
+    calcularResultado(){
+      let melhorClasse = null;
+      let maiorPontuacao = -1;
+
+      for(let classe in this.personagens){
+        if(this.personagens[classe].pontuacao > maiorPontuacao){
+          maiorPontuacao = this.personagens[classe].pontuacao;
+          melhorClasse = this.personagens[classe]
+        }
+      }
+      const resultadoClasse = document.getElementById("tipo-classe")
+      resultadoClasse.textContent = melhorClasse.nome;
+
+      const resultadoDescricao = document.getElementById("descricao-classe")
+      resultadoDescricao.textContent = melhorClasse.descricao;
+
+      document.getElementById("container-perguntas").style.display = "none"
+      document.getElementById("resultado-classe").style.display = "block"
+    };
+};
+
+const quiz = new Quiz();
+
+quiz.mostrarPergunta();
+
+document.getElementById("proxima-pergunta").addEventListener("click",() =>{
+  quiz.proximaPergunta();
+});
+      
+      
+      
 
 /*
 mago
