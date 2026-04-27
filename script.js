@@ -208,18 +208,42 @@ class Quiz {
       contagemQuestoes.textContent = this.questaoAtual + 1
 
       const pergunta = document.getElementById("pergunta")
-      pergunta.textContent = this.perguntas[this.questaoAtual].pergunta
+      animarTexto(pergunta, this.perguntas[this.questaoAtual].pergunta)
+      // pergunta.textContent = this.perguntas[this.questaoAtual].pergunta
+
+      for(let j = 1; j <= 4; j++){
+        document.getElementById("opcao-"+ j).classList.remove("selecionado");
+      }
       
-      for(let i = 0; i<4 ; i++){
-        const botao = document.getElementById("opcao-"+ (i+1))
-        botao.textContent = this.perguntas[this.questaoAtual].opcoes[i].texto
-        botao.onclick = () =>{
-          const pontos = this.perguntas[this.questaoAtual].opcoes[i].pontos;
-          for(let classe in pontos){
-            this.personagens[classe].adicionarPontos(pontos[classe]);
+      setTimeout(() => {
+        for(let i = 0; i<4 ; i++){
+
+          const botao = document.getElementById("opcao-"+ (i+1))
+          animarTexto(botao, this.perguntas[this.questaoAtual].opcoes[i].texto)
+          botao.classList.remove("fade-in")
+          void botao.offsetWidth
+          botao.classList.add("fade-in")
+          
+          
+          botao.textContent = this.perguntas[this.questaoAtual].opcoes[i].texto
+          
+          botao.onclick = () =>{
+            
+            const pontos = this.perguntas[this.questaoAtual].opcoes[i].pontos;
+            
+            for(let j = 1; j <= 4; j++){
+            document.getElementById("opcao-"+ j).classList.remove("selecionado");
+            }
+            botao.classList.add("selecionado");
+
+            for(let classe in pontos){
+              this.personagens[classe].adicionarPontos(pontos[classe]);
+            }
+
+
           }
         }
-      }
+      },500)
     }
     proximaPergunta(){
       this.questaoAtual++;
@@ -261,8 +285,45 @@ document.getElementById("proxima-pergunta").addEventListener("click",() =>{
   quiz.proximaPergunta();
 });
       
-      
-      
+
+
+// PARTE ESTÉTICA
+
+function animarTexto(elemento, texto){
+
+let i = 0;
+
+
+const intervalo = setInterval(() => {
+
+  let textoAnimado = texto.slice(0, i)
+  for( let j= i; j< texto.length; j++)
+    {
+      textoAnimado += Math.random() > 0.5 ? "1" : "0"
+    }
+  elemento.textContent = textoAnimado;
+
+  if(i >= texto.length)
+    {
+      clearInterval(intervalo)
+    }
+
+  i++
+
+}, 50)
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 mago
