@@ -14,30 +14,45 @@
             <span>Responda da forma mais honesta possível.</span>
             <p>Questão <span id="contagem_questoes"></span> de 10</p>
         </header>
+        
+        <div id="tela-boas-vindas">
+            <div id="descricao-universo">
+                <p id="texto-boas-vindas-titulo">[ PROTOCOLO DE IDENTIFICAÇÃO INICIADO ]</p>
+                <p>
+                    Bem-vindo, aventureiro. Antes de adentrar este mundo,
+                    o sistema precisa analisar sua essência — seus instintos,
+                    seus valores, o que pulsa dentro de você quando tudo está em jogo.
+                </p>
+                <p>
+                    Cada resposta revela um fragmento de quem você realmente é.
+                    Ao final, sua classe será determinada — não pelo que você deseja ser,
+                    mas pelo que você já é.
+                </p>
+                <p>
+                    Mago ou Guerreiro. Santo ou Necromante. Caçador ou Invocador Divino.
+                    O caminho existe. Ele só aguarda ser reconhecido.
+                </p>
+                <p id="texto-boas-vindas-aviso">Responda com honestidade. O sistema não aceita mentiras.</p>
+            </div>
+            <button id="btn-iniciar">▶ INICIAR IDENTIFICAÇÃO</button>
+        </div>
 
         <div id="container-perguntas">
             <p id="pergunta"></p>
-            <button class="selecionado" id="opcao-1"></button>
-            <button class="selecionado" id="opcao-2"></button>
-            <button class="selecionado" id="opcao-3"></button>
-            <button class="selecionado" id="opcao-4"></button>
-        <button id="proxima-pergunta">Próxima questão</button>
+            <button id="opcao-1"></button>
+            <button id="opcao-2"></button>
+            <button id="opcao-3"></button>
+            <button id="opcao-4"></button>
+            <button id="proxima-pergunta">Próxima questão</button>
         </div>
 
-    <div id="resultado-classe">
-
-        <h2>Classe anexada! Sua classe é <span id="tipo-classe"></span></h2>
-        <p id="descricao-classe"></p>
-
+        <div id="resultado-classe">
+            <h2>Classe anexada! Sua classe é <span id="tipo-classe"></span></h2>
+            <p id="descricao-classe"></p>
+            <p id="pontuacao-resultado"></p>
+            <button id="btn-reiniciar">↺ JOGAR NOVAMENTE</button>
+        </div>
     </div>
-
-
-    </div>
-
-
-
-
-
 
     <script src="script.js"></script>
 </body>

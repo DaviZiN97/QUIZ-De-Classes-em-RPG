@@ -10,7 +10,6 @@ body{
     min-height: 100vh;
     color: #11ff00;
     font-family: 'Orbitron', sans-serif;
-    
 }
 
 #container-principal{
@@ -22,7 +21,6 @@ body{
     border: 1px solid #11ff00;
     box-shadow: 0 0 10px #11ff00;
 }
-
 
 button{
     background: linear-gradient(to bottom right, black, rgb(0,0,80));
@@ -38,11 +36,7 @@ button{
 }
 
 button:hover {
-
-
-    /* background: linear-gradient(to bottom right, black, rgb(0, 0, 150));  /* AZUL ESCURO */
-     
-    background: linear-gradient(to bottom right, black, rgb(0, 50, 0)); /* VERDE ESCURO */
+    background: linear-gradient(to bottom right, black, rgb(0, 50, 0));
     color: rgb(255, 255, 255);
     transform: scale(1.05);
 }
@@ -54,30 +48,28 @@ header{
 }
 
 header h1 {
-font-size: 40px;
-letter-spacing: 5px;
-text-shadow: 0 0 10px #11ff00;
+    font-size: 40px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px #11ff00;
 }
 
 #proxima-pergunta{
     width: 150px;
     display: block;
-    /* padding-top: 10px; */
-    /* padding-bottom: 10px; */
     padding: 10px;
     text-align: center;
     margin-left: auto;
     margin-right: 30px;
-    /* background: linear-gradient(225deg,black, rgb(39, 39, 98) ); */
     background: #0dff00cc;
     border: 1px solid rgba(30, 0, 255, 1);
     color: black;
     border-radius: 5%;
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
+
 #proxima-pergunta:hover{
-opacity: 0.6;
-transform: scale(1.05);
+    opacity: 0.6;
+    transform: scale(1.05);
 }
 
 #proxima-pergunta:active{
@@ -95,8 +87,6 @@ button:active{
     opacity: 0.8;
 }
 
-
-/* RESULTADO DE CLASSES */
 #tipo-classe{
     display: block;
     font-size: 70px;
@@ -115,13 +105,173 @@ button:active{
     margin-top: 40px;
 }
 
+#pontuacao-resultado{
+    color: rgba(17, 255, 0, 0.6);
+    font-size: 14px;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
 
+#btn-reiniciar{
+    width: 200px;
+    margin: 30px auto 0;
+    padding: 12px;
+    text-align: center;
+    background: transparent;
+    border: 1px solid rgba(17, 255, 0, 0.6);
+    color: #11ff00;
+    border-radius: 5%;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: block;
+}
 
-/* animação dos botões */
+#btn-reiniciar:hover{
+    background: rgba(17, 255, 0, 0.1);
+    transform: scale(1.05);
+}
+
+#tela-boas-vindas{
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+}
+
+#descricao-universo{
+    border: 1px solid rgba(17, 255, 0, 0.3);
+    padding: 25px;
+    margin-bottom: 30px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#descricao-universo p{
+    color: rgba(17, 255, 0, 0.8);
+    font-size: 13px;
+    line-height: 2;
+    margin-bottom: 15px;
+}
+
+#descricao-universo p:last-child{
+    margin-bottom: 0;
+}
+
+#btn-iniciar{
+    width: 250px;
+    padding: 15px;
+    text-align: center;
+    background: #0dff00cc;
+    border: 1px solid rgba(30, 0, 255, 1);
+    color: black;
+    border-radius: 5%;
+    font-size: 14px;
+    letter-spacing: 2px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    margin: 0 auto;
+    display: block;
+}
+
+#btn-iniciar:hover{
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+#btn-iniciar:active{
+    transform: scale(0.95);
+    opacity: 0.8;
+}
+
 .fade-in {
     animation: fadeIn 0.5s ease;
 }
 
+#container-perguntas{
+    display: none;
+}
+
 #resultado-classe{
-    display:none;
+    display: none;
+}
+
+#texto-boas-vindas-titulo{
+    color: #11ff00;
+    font-size: 11px;
+    letter-spacing: 3px;
+    opacity: 0.6;
+    margin-bottom: 20px;
+}
+
+#texto-boas-vindas-aviso{
+    color: #11ff00;
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-top: 1px solid rgba(17, 255, 0, 0.2);
+    padding-top: 15px;
+    margin-top: 5px;
+    opacity: 0.9;
+}
+
+.ranking-titulo{
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgba(17, 255, 0, 0.5);
+    margin-bottom: 18px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(17, 255, 0, 0.2);
+    padding-top: 20px;
+}
+
+.ranking-linha{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    opacity: 0.6;
+}
+
+.ranking-vencedor{
+    opacity: 1;
+}
+
+.ranking-emoji{
+    font-size: 16px;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.ranking-nome{
+    font-size: 11px;
+    letter-spacing: 1px;
+    width: 130px;
+    flex-shrink: 0;
+    text-align: left;
+}
+
+.ranking-barra-fundo{
+    flex: 1;
+    height: 6px;
+    background: rgba(17, 255, 0, 0.1);
+    border: 1px solid rgba(17, 255, 0, 0.2);
+}
+
+.ranking-barra-preenchida{
+    height: 100%;
+    background: rgba(17, 255, 0, 0.7);
+    transition: width 0.6s ease;
+}
+
+.ranking-vencedor .ranking-barra-preenchida{
+    background: #11ff00;
+    box-shadow: 0 0 8px #11ff00;
+}
+
+.ranking-pts{
+    font-size: 13px;
+    font-weight: bold;
+    width: 24px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.ranking-vencedor .ranking-pts{
+    color: #11ff00;
+    text-shadow: 0 0 6px #11ff00;
 }
