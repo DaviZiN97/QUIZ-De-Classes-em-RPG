@@ -285,13 +285,13 @@ class Quiz {
       }
 
       const resultadoClasse = document.getElementById("tipo-classe")
-      resultadoClasse.textContent = melhorClasse.nome;
+      resultadoClasse.textContent = (emojiClasse[melhorClasse.nome] || "") + " " + melhorClasse.nome;
 
       const resultadoDescricao = document.getElementById("descricao-classe")
       resultadoDescricao.textContent = melhorClasse.descricao;
 
-      // top 5
-      
+      // top 3
+
       const ranking = Object.values(this.personagens).filter(c => c.pontuacao > 0).sort((a, b) => b.pontuacao - a.pontuacao);
       const top5 = ranking.slice(0, 5);
       const container = document.getElementById("pontuacao-resultado");
