@@ -190,8 +190,24 @@ const Perguntas = [{
 }
 ]
 
+// emojis das classes
 
-
+const emojiClasse = {
+  "Mago":             "🧙",
+  "Guerreio":         "⚔️",
+  "Assasino":         "🗡️",
+  "Santo":            "✝️",
+  "Paladino":         "🛡️",
+  "Artista Marcial":  "🥋",
+  "Rei do Combate":   "👑",
+  "Sábio":            "📖",
+  "Guerreiro Mágico": "✨",
+  "Mago de Combate":  "🔮",
+  "Invocador Divino": "🌟",
+  "Invocador":        "🌀",
+  "Caçador":          "🏹",
+  "Necromante":       "💀",
+}
 
 
 class Quiz {
@@ -209,7 +225,6 @@ class Quiz {
 
       const pergunta = document.getElementById("pergunta")
       animarTexto(pergunta, this.perguntas[this.questaoAtual].pergunta)
-      // pergunta.textContent = this.perguntas[this.questaoAtual].pergunta
 
       for(let j = 1; j <= 4; j++){
         document.getElementById("opcao-"+ j).classList.remove("selecionado");
@@ -245,6 +260,7 @@ class Quiz {
         }
       },500)
     }
+
     proximaPergunta(){
       this.questaoAtual++;
 
@@ -256,6 +272,7 @@ class Quiz {
       }
 
     }
+
     calcularResultado(){
       let melhorClasse = null;
       let maiorPontuacao = -1;
@@ -266,25 +283,81 @@ class Quiz {
           melhorClasse = this.personagens[classe]
         }
       }
+
       const resultadoClasse = document.getElementById("tipo-classe")
-      resultadoClasse.textContent = melhorClasse.nome;
+      resultadoClasse.textContent = (emojiClasse[melhorClasse.nome] || "") + " " + melhorClasse.nome;
 
       const resultadoDescricao = document.getElementById("descricao-classe")
       resultadoDescricao.textContent = melhorClasse.descricao;
 
+      // top 3
+
+      const ranking = Object.values(this.personagens).filter(c => c.pontuacao > 0).sort((a, b) => b.pontuacao - a.pontuacao);
+      const top5 = ranking.slice(0, 5);
+      const container = document.getElementById("pontuacao-resultado");
+      container.innerHTML = "";
+
+      const titulo = document.createElement("p");
+      titulo.textContent = "PONTUAÇÃO FINAL";
+      titulo.className = "ranking-titulo";
+      container.appendChild(titulo);
+
+      top5.forEach((classe, index) => {
+        const larguraBarra = maiorPontuacao > 0 ? (classe.pontuacao / maiorPontuacao) * 100 : 0;
+
+        const linha = document.createElement("div");
+        linha.className = "ranking-linha" + (index === 0 ? " ranking-vencedor" : "");
+
+        linha.innerHTML = `
+          <span class="ranking-emoji">${emojiClasse[classe.nome] || "⚔️"}</span>
+          <span class="ranking-nome">${classe.nome}</span>
+          <div class="ranking-barra-fundo">
+            <div class="ranking-barra-preenchida" style="width: ${larguraBarra}%"></div>
+          </div>
+          <span class="ranking-pts">${classe.pontuacao}</span>
+        `;
+
+        container.appendChild(linha);
+      });
+
       document.getElementById("container-perguntas").style.display = "none"
       document.getElementById("resultado-classe").style.display = "block"
     };
+
 };
 
 const quiz = new Quiz();
 
-quiz.mostrarPergunta();
+// inicio
+
+document.getElementById("btn-iniciar").addEventListener("click", () => {
+  document.getElementById("tela-boas-vindas").style.display = "none";
+  document.getElementById("container-perguntas").style.display = "block";
+  quiz.mostrarPergunta();
+});
 
 document.getElementById("proxima-pergunta").addEventListener("click",() =>{
   quiz.proximaPergunta();
 });
-      
+
+// reiniciar
+
+document.getElementById("btn-reiniciar").addEventListener("click", () => {
+  quiz.questaoAtual = 0;
+
+  for(let classe in quiz.personagens){
+    quiz.personagens[classe].resetarPontuacao();
+  }
+
+  document.getElementById("tipo-classe").textContent = "";
+  document.getElementById("descricao-classe").textContent = "";
+  document.getElementById("pontuacao-resultado").innerHTML = "";
+
+  document.getElementById("resultado-classe").style.display = "none";
+  document.getElementById("container-perguntas").style.display = "block";
+
+  quiz.mostrarPergunta();
+});
 
 
 // PARTE ESTÉTICA
@@ -315,16 +388,6 @@ const intervalo = setInterval(() => {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /*
 mago
 guerreiro
@@ -345,150 +408,3 @@ necromante
 
 
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const perguntas = [
-//   {
-//     texto: "Como você age diante de um problema difícil?",
-//     opcoes: [
-//       {
-//         texto: "Enfrento diretamente",
-//         pontos: { personagemA: 3, personagemB: 1 }
-//       },
-//       {
-//         texto: "Analiso com calma antes de agir",
-//         pontos: { personagemB: 3, personagemC: 1 }
-//       },
-//       {
-//         texto: "Peço ajuda para outras pessoas",
-//         pontos: { personagemC: 3, personagemA: 1 }
-//       },
-//       {
-//         texto: "Tento evitar conflito",
-//         pontos: { personagemD: 3, personagemB: 1 }
-//       }
-//     ]
-//   },
-//   {
-//     texto: "Qual dessas qualidades combina mais com você?",
-//     opcoes: [
-//       {
-//         texto: "Coragem",
-//         pontos: { personagemA: 3 }
-//       },
-//       {
-//         texto: "Sabedoria",
-//         pontos: { personagemB: 3 }
-//       },
-//       {
-//         texto: "Empatia",
-//         pontos: { personagemC: 3 }
-//       },
-//       {
-//         texto: "Mistério",
-//         pontos: { personagemD: 3 }
-//       }
-//     ]
-//   }
-// ];
-
-// const pontuacao = {
-//   personagemA: 0,
-//   personagemB: 0,
-//   personagemC: 0,
-//   personagemD: 0
-// };
-
-// const quiz = document.getElementById("quiz");
-// const btnFinalizar = document.getElementById("btnFinalizar");
-// const resultado = document.getElementById("resultado");
-
-// perguntas.forEach((pergunta, indicePergunta) => {
-//   const divPergunta = document.createElement("div");
-
-//   divPergunta.innerHTML = `<h3>${pergunta.texto}</h3>`;
-
-//   pergunta.opcoes.forEach((opcao, indiceOpcao) => {
-//     const label = document.createElement("label");
-
-//     label.innerHTML = `
-//       <input 
-//         type="radio" 
-//         name="pergunta${indicePergunta}" 
-//         value="${indiceOpcao}"
-//       >
-//       ${opcao.texto}
-//     `;
-
-//     divPergunta.appendChild(label);
-//     divPergunta.appendChild(document.createElement("br"));
-//   });
-
-//   quiz.appendChild(divPergunta);
-// });
-
-// btnFinalizar.addEventListener("click", () => {
-//   // Zera a pontuação antes de calcular
-//   for (let personagem in pontuacao) {
-//     pontuacao[personagem] = 0;
-//   }
-
-//   perguntas.forEach((pergunta, indicePergunta) => {
-//     const respostaMarcada = document.querySelector(
-//       `input[name="pergunta${indicePergunta}"]:checked`
-//     );
-
-//     if (respostaMarcada) {
-//       const indiceOpcao = respostaMarcada.value;
-//       const pontosDaOpcao = pergunta.opcoes[indiceOpcao].pontos;
-
-//       for (let personagem in pontosDaOpcao) {
-//         pontuacao[personagem] += pontosDaOpcao[personagem];
-//       }
-//     }
-//   });
-
-//   let personagemVencedor = "";
-//   let maiorPontuacao = 0;
-
-//   for (let personagem in pontuacao) {
-//     if (pontuacao[personagem] > maiorPontuacao) {
-//       maiorPontuacao = pontuacao[personagem];
-//       personagemVencedor = personagem;
-//     }
-//   }
-
-//   resultado.textContent = `Seu resultado é: ${personagemVencedor}`;
-// });
-
-//teste
-
-// Adiciona as alterações ~ git add .
-
-// Salva as alterações no pc ~ git commit -m "mensagem"
-
-// Se quiser mandar pro github ~ git push
