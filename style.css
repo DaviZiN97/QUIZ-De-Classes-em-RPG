@@ -53,6 +53,11 @@ header h1 {
     text-shadow: 0 0 10px #11ff00;
 }
 
+header p {
+    text-align: right;
+    opacity: 0;
+}
+
 #proxima-pergunta{
     width: 150px;
     display: block;
@@ -147,6 +152,9 @@ button:active{
     font-size: 13px;
     line-height: 2;
     margin-bottom: 15px;
+    opacity: 0;
+    word-break: break-all;
+    overflow: hidden;
 }
 
 #descricao-universo p:last-child{
