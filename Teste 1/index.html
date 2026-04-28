@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste de Personalidade - Reino de Aetherion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <section id="telaInicial">
+      <h1>Bem-vindo ao Reino de Aetherion</h1>
+      <p>
+        Em um mundo onde magia, coragem, sabedoria e sombras disputam o destino dos povos,
+        cada pessoa carrega dentro de si a essência de um grande personagem.
+      </p>
+      <p>
+        Responda ao questionário e descubra qual herói de Aetherion combina mais com você.
+      </p>
+
+      <button id="btnIniciar">Começar questionário</button>
+    </section>
+
+    <section id="telaQuestionario">
+      <h2 id="textoPergunta"></h2>
+      <div id="opcoes"></div>
+      <p id="progresso"></p>
+    </section>
+
+    <section id="telaResultado">
+      <h2>Seu resultado:</h2>
+      <h1 id="nomeResultado"></h1>
+      <p id="descricaoResultado"></p>
+      <p id="pontuacaoResultado"></p>
+      <img id="imagemResultado" src="" alt="Imagem do personagem">
+      <br>
+      <button id="btnReiniciar">Refazer teste</button>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
